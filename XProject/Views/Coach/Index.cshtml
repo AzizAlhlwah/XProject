@@ -69,3 +69,39 @@
 }
     </tbody>
 </table>
+
+<section>
+    <div class="row">
+        <div class="col-md-12">
+
+            @foreach (var item in Model)
+            {
+
+                <div class="box">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="box-img">
+                                <img src="~/images/icon_user.png" />
+                            </div> <!-- box-img -->
+                        </div>
+                        <div class="col-md-5">
+                            <div class="body-content">
+                                <h4> @item.Name </h4>
+                                <span> ****** </span>
+                            </div> <!-- body-content -->
+                        </div>
+                        <div class="col-md-3">
+                            <label>Price</label><br />
+                            <label> @item.HourPrice</label> <span> ريال </span>
+                        </div>
+                        <div class="col-md-2">
+                            <a class="btn-more" asp-controller="" asp-action=""> التفاصيل </a>
+                        </div>
+                    </div> <!-- Row -->
+                </div> <!-- box -->
+
+            }
+        </div> <!-- col-md-12 -->
+    </div> <!-- Row -->
+</section>
+

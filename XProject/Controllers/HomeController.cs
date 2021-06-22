@@ -33,5 +33,20 @@ namespace XProject.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
+        public IActionResult login()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public IActionResult login(string Username, string Password)
+        {
+
+
+            return View();
+        }
     }
 }
