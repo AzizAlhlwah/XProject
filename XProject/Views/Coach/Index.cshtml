@@ -1,75 +1,8 @@
-﻿@model IEnumerable<XProject.Models.Coach>
+﻿@model IEnumerable<XProject.Models.ApplactionUsers>
 
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.nationalId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Mobile)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DesiredTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DesiredPeriod)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HourPrice)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.nationalId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Mobile)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DesiredTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DesiredPeriod)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HourPrice)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-
 <section>
     <div class="row">
         <div class="col-md-12">
@@ -86,20 +19,23 @@
                         </div>
                         <div class="col-md-5">
                             <div class="body-content">
-                                <h4> @item.Name </h4>
-                                <span> ****** </span>
+                                <h4> @item.Email </h4>
+                                <span>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </span>
                             </div> <!-- body-content -->
                         </div>
                         <div class="col-md-3">
                             <label>Price</label><br />
-                            <label> @item.HourPrice</label> <span> ريال </span>
+                            <label> @item.nationalId</label> <span> ريال </span>
                         </div>
                         <div class="col-md-2">
                             <a class="btn-more" asp-controller="" asp-action=""> التفاصيل </a>
                         </div>
                     </div> <!-- Row -->
                 </div> <!-- box -->
-
             }
         </div> <!-- col-md-12 -->
     </div> <!-- Row -->
