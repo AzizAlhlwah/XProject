@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>7a85a86d-b0d2-4072-916a-4950a9c240f1</UserSecretsId>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    <SatelliteResourceLanguages>ar</SatelliteResourceLanguages>
+
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,7 +21,4 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
   </ItemGroup>
-
-
-
 </Project>

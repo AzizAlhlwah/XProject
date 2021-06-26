@@ -4,6 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - XProject</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kufam:ital,wght@0,400;0,500;0,600;0,800;0,900;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -21,9 +26,6 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"> الرئيسية</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">السياسات </a>
-                        </li>
 
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Coach" asp-action="Index">المدربين </a>
@@ -33,9 +35,36 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">طلبات التدريب </a>
                         </li>
 
+                        @if (@ViewBag.NID != null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="logout"> خروج  </a>
+                            </li>
+
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="register"> التسجيل  </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="login"> دخول  </a>
+                            </li>
+                        }
+
+
+
 
                     </ul>
-                </div>
+
+                    @if (@ViewBag.NID != null)
+                    {
+                        <div class="protfil">
+                            <a asp-controller="Home" asp-action="RedirectBaesOnRoll">  لوحة التحكم</a>
+                        </div>
+                    }
+                    </div>
             </div>
         </nav>
     </header>
@@ -47,7 +76,8 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2021 - XProject - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2021 - XProject - <a asp-area="" asp-controller="Home" asp-action="Index">الرئيسية</a> -
+            <a asp-area="" asp-controller="Home" asp-action="Privacy">السياسات</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

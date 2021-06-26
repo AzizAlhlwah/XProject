@@ -18,9 +18,44 @@ namespace XProject.Migrations
                 .HasAnnotation("ProductVersion", "5.0.7")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("XProject.Models.ApplactionUsers", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Confirmpassword")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Hours")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("nationalId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("rolls")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("applactionUsers");
+                });
+
             modelBuilder.Entity("XProject.Models.Coach", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("nationalId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -37,18 +72,33 @@ namespace XProject.Migrations
                     b.Property<int>("HourPrice")
                         .HasColumnType("int");
 
+                    b.Property<int>("ID")
+                        .HasColumnType("int");
+
                     b.Property<string>("Mobile")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("nationalId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
+                    b.HasKey("nationalId");
 
                     b.ToTable("coach");
+                });
+
+            modelBuilder.Entity("XProject.Models.CoachShudel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Hours")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("coachShudel");
                 });
 
             modelBuilder.Entity("XProject.Models.Trainee", b =>

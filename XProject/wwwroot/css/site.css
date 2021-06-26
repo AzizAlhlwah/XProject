@@ -1,9 +1,13 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
-body{
-    direction:rtl;
+body {
+    direction: rtl !important;
+    font-family: 'Kufam', cursive !important;
 }
 
+h1, h2, h3, h4, h5, h6, p {
+    font-family: 'Kufam', cursive;
+}
 
 a.navbar-brand {
   white-space: normal;
@@ -13,7 +17,8 @@ a.navbar-brand {
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+    color: #3e3e3e;
+    font-family: 'Kufam', cursive;
 }
 
 .btn-primary {
@@ -117,3 +122,154 @@ body {
         text-decoration:none;
         Background: #30a1e5;
     }
+
+
+.box-img-login {
+    width: 100%;
+    height: 60px;
+}
+
+.box-login {
+    width: 100%;
+    height: auto;
+    margin: 30px auto;
+    min-height: 300px;
+}
+
+.btn-color {
+    background-color: black !important;
+}
+.sizing-width{
+    width:90% !important;
+    margin: 0 auto;
+}
+
+.hero-image {
+    background-color: black;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+    .hero-image img{
+        width:100%;
+        height:100%;
+        background-size:contain;
+    }
+
+    .box-login label {
+        display: block;
+        text-align: right;
+    }
+
+button.close {
+    float: left;
+    position: absolute;
+    top: 14px;
+    left: 20px;
+}
+
+.Item-ment {
+    text-align: right;
+    width: 100%;
+    height: auto;
+    min-height: 200px;
+    padding: 20px;
+    border: 1px solid #e5e5e5;
+    BORDER-RADIUS: 23PX;
+}
+    .Item-ment ul {
+        list-style: none;
+    }
+.Item-ment ul li {
+   margin-bottom: 20px;
+}
+
+.box-img img {
+    margin: 20px auto;
+}
+.text-box{
+    text-align:right;
+}
+
+.img-box {
+    width: 100%;
+    height: 70vh;
+    overflow: hidden;
+    border-radius: 19px;
+}
+.img-box img {
+    background-size: contain;
+    width: 100%;
+}
+
+.protfil {
+    float: left;
+    display: block;
+    position: absolute;
+}
+.ads-box {
+    margin-top: 20px;
+    width: 100%;
+    height: 250px;
+    background-color: #2b2b2b;
+    border-radius: 23PX;
+}
+.insaid-text {
+    position: absolute;
+    bottom: 15px;
+    left: 45px;
+    color: #fff;
+}
+.astatistic-box {
+    width: 100%;
+    min-height: 130px;
+    height: auto;
+    margin-top: 20px;
+    background-color: white;
+    box-shadow: 0 0.25rem 0.75rem rgb(0 0 0 / 5%);
+    border-radius: 9px;
+    border: 1px solid #ededed;
+}
+
+.open-order label{
+    display:block;
+    margin:20px;
+    font-size:12px;
+    text-align:center;
+    color:#c4c4c4;
+}
+.open-order h4{
+    font-size:28px;
+    font-weight:bold;
+    text-align:center;
+}
+    .open-order h4 span {
+        font-size: 14px;
+        color: #c4c4c4;
+        font-weight: 100;
+    }
+.Item-ment ul li a i {
+    color: #c4c4c4 !important;
+    margin-left:5px !important;
+}
+
+.section-myProfile{
+    width:70%;
+
+    text-align:right;
+}
+.form-group  .section-myProfile label{
+    text-align:right;
+    display:block;
+}
+.box-days ul {
+    list-style: none
+}
+
+.box-days ul li{
+    float:right;
+    margin-right:15px;
+}
+.coolor-White{
+    color:white;
+}
