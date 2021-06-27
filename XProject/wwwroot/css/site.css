@@ -2,6 +2,7 @@
 for details on configuring this project to bundle and minify static web assets. */
 body{
     direction:rtl;
+    text-align:right;
 }
 
 
@@ -117,3 +118,7 @@ body {
         text-decoration:none;
         Background: #30a1e5;
     }
+
+.bi{
+    color:darkturquoise;
+}
