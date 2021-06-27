@@ -13,9 +13,11 @@ namespace XProject.Models
 
         }
 
-        public DbSet<Coach> coach { get; set; }
-        public DbSet<Trainee> trainee { get; set; }
-
+        
+       public DbSet<Coach> coach { get; set; }
+       public DbSet<Trainee> trainee { get; set; }
+        public DbSet<ApplactionUsers> applactionUsers { get; set; }
+        public DbSet<CoachShudel> coachShudel { get; set; }
         
     }
 }

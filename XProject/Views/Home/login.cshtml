@@ -1,18 +1,38 @@
-﻿
+﻿@model ApplactionUsers
 @{
     ViewData["Title"] = "login";
+    Layout = "_FristPageLayout";
 }
 
-<h1>login</h1>
 
 
+<div class="box-img-login">
 
-<div class="row">
-    <div class="col-md-8">
-        Lift
-    </div>
-
-    <div class="col-md-4">
-        Right
-    </div>
 </div>
+
+<div class="box-login m-1">
+
+    <div class="form-group">
+        <label>
+            <i class="far fa-envelope"></i>
+            البريد الإلكتروني
+        </label>
+        <input asp-for="Email" class="form-control" placeholder="Email" />
+    </div>
+
+    <div class="form-group">
+        <label>
+            <i class="fas fa-unlock-alt"></i>
+            كلمة المرور
+        </label>
+        <input asp-for="Password" class="form-control" type="password" placeholder="password" />
+    </div>
+
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary btn-color" value="دخول " />
+        <br />  <br />
+        <a href="#">  نسيت كلمة المرور؟</a>
+        <br />
+        <a asp-controller="Home" asp-action="register">  تسجيل جديد </a>
+    </div>
+</div> <!--  box-login -->
