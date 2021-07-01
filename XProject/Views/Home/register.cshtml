@@ -58,4 +58,65 @@
         <br />
         <a asp-controller="Home" asp-action="login">  هل لديك حساب؟</a>
     </div>
+
+﻿@model ApplactionUsers
+@{
+    ViewData["Title"] = "register";
+    Layout = "_FristPageLayout";
+}
+
+
+<div class="box-img-login">
+
+</div>
+
+<div class="box-login m-1">
+    <div class="form-group">
+        <label> التسجيل  كـ</label>
+        <select asp-for="rolls" class="form-control">
+            <option value="1">مدرب</option>
+            <option value="2">متدرب</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>
+            <i class="fas fa-id-card"></i>
+            رقم الهوية
+        </label>
+        <input asp-for="nationalId" class="form-control" placeholder="national Id" required />
+    </div>
+
+
+    <div class="form-group">
+        <label>
+            <i class="far fa-envelope"></i>
+            البريد الإلكتروني
+        </label>
+        <input asp-for="Email" class="form-control" placeholder="Email" required/>
+    </div>
+
+    <div class="form-group">
+        <label>
+            <i class="fas fa-unlock-alt"></i>
+            كلمة المرور
+        </label>
+        <input asp-for="Password" class="form-control" type="password" placeholder="password" required />
+    </div>
+
+    <div class="form-group">
+        <label>
+            <i class="fas fa-unlock-alt"></i>
+            تأكيد كلملة المرور
+        </label>
+        <input asp-for="Confirmpassword" class="form-control" type="password" placeholder="Confirm password" required />
+    </div>
+
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary btn-color" value="تسجيل " />
+        <br />  <br />
+        <a href="#">  نسيت كلمة المرور؟</a>
+        <br />
+        <a asp-controller="Home" asp-action="login">  هل لديك حساب؟</a>
+    </div>
 </div> <!--  box-login -->
