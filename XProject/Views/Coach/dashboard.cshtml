@@ -3,61 +3,13 @@
     ViewData["Title"] = "dashboard";
 }
 
-<h1></h1>
 
 <div class="row">
     <div class="col-md-3">
-        <div class="Item-ment">
-            <ul>
-                <li><a href="#"><i class="fas fa-home"></i>  الرئيسية</a></li>
-                <li><a asp-controller="Coach" asp-action="MyProfile"> <i class="fas fa-id-badge"></i> ملفي</a></li>
-                <li><a href="#"> <i class="fas fa-receipt"></i> الطلبات </a></li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-user-cog"></i> الإعدادات
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="ads-box">
-            <div class="insaid-text"> ADS </div>
-        </div>
-    </div>
+        <partial name="~/Views/Shared/_RightMenuCoachPartial.cshtml" />
+    </div><!-- col-md-3 -->
 
     <div class="col-md-9">
-        <div class="astatistic-box">
-
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="open-order">
-                        <label>الطلبات المفتوحة  </label>
-                        <h4> 3 </h4>
-                    </div><!-- open-order -->
-                </div> <!-- col-md-4 -->
-
-                <div class="col-md-3">
-                    <div class="open-order">
-                        <label>الطلبات المغلقة  </label>
-                        <h4> 3 </h4>
-                    </div><!-- open-order -->
-                </div> <!-- col-md-4 -->
-
-                <div class="col-md-3">
-                    <div class="open-order">
-                        <label>  ساعات التدريب </label>
-                        <h4> 6 <span> ساعات </span> </h4>
-                    </div><!-- open-order -->
-                </div> <!-- col-md-4 -->
-
-                <div class="col-md-3">
-                    <div class="open-order">
-                        <label>المبلغ  </label>
-                        <h4> 3200 <span> ريال </span> </h4>
-                    </div><!-- open-order -->
-                </div> <!-- col-md-4 -->
-            </div> <!-- row -->
-
-        </div> <!-- astatistic-box -->
+        <partial name="~/Views/Shared/_StatisticPartial.cshtml" />
     </div> <!-- col-md-9 -->
-
 </div> <!-- row -->
