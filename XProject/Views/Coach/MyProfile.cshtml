@@ -108,4 +108,115 @@
             </div>
         </div>
     </div>
+
+﻿@model ApplactionUsers
+@{
+    ViewData["Title"] = "MyProfile";
+}
+
+
+<section class="section-myProfile">
+    <div class="row">
+
+        <div class="col-md-4">
+            <div class="Item-ment">
+                <ul>
+                    <li><a asp-controller="Coach" asp-action="dashboard"><i class="fas fa-home"></i>  الرئيسية</a></li>
+                    <li><a asp-controller="Coach" asp-action="MyProfile"> <i class="fas fa-id-badge"></i> ملفي</a></li>
+                    <li><a href="#"> <i class="fas fa-receipt"></i> الطلبات </a></li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-user-cog"></i> الإعدادات
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="ads-box">
+                <div class="insaid-text"> ADS </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+
+            <div class="form-group">
+                <label> رقم الهوية</label>
+                <input readonly value="" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label> الاســم </label>
+                <input asp-for="Name" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label> رقم الهوية</label>
+                <input asp-for="Email" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label>  الساعات </label>
+                <select asp-for="Hours" class="form-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+            </div>
+            <br /> 
+            <div class="form-group">
+                <div class="box-days">
+                    <label> الايام المناسبة لك </label>
+                    <ul>
+                        <li>
+                            <input type="checkbox" />  السبت
+                        </li>
+
+                        <li>
+                            <input type="checkbox" />  الأحد
+                        </li>
+
+                        <li>
+                            <input type="checkbox" />  الأثنين
+                        </li>
+
+                        <li>
+                            <input type="checkbox" />  الثلاثاء
+                        </li>
+
+                        <li>
+                            <input type="checkbox" />  الأربعاء
+                        </li>
+
+                        <li>
+                            <input type="checkbox" />  الخميس
+                        </li>
+
+                        <li>
+                            <input type="checkbox" />  الجمعة
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            
+
+            <br /> <br /> 
+            <div class="form-group">
+                <label> كلمة المرور </label>
+                <input asp-for="Password" type="password" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label> تأكيد كلمة المرور </label>
+                <input asp-for="Confirmpassword" type="password" class="form-control" />
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" value=" حفــظ"  class="btn btn-color coolor-White"/>
+            </div>
+        </div>
+    </div>
 </section>
