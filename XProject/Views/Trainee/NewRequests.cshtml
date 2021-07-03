@@ -1,0 +1,61 @@
+﻿@model TrainingOffers
+@{
+    ViewData["Title"] = "NewRequests";
+}
+
+
+<section class="section-myProfile">
+    <div class="row">
+
+        <div class="col-md-4">
+            <partial name="~/Views/Shared/User/_RightMenuUserPartial.cshtml" />
+        </div>
+
+        <div class="col-md-8">
+            <form method="post" asp-controller="Trainee" asp-action="NewRequests">
+                <input type="hidden" asp-for="nationalId" value="@ViewBag.NID"/>
+                <div class="form-group">
+                    <label>  الوصف: </label>
+                    <input asp-for="Description" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label>  الأيام المرغوبة: </label>
+                    <input asp-for="Days" type="text" placeholder="السبت, الأحد , الاثنين" class="form-control" />
+                </div>
+                <br />
+                <div class="form-group">
+                    <div class="box-days">
+                        <label>  عدد الساعات المرغوبة يومياً: </label>
+                        <select asp-for="Hour" class="form-control">
+                            <option value="1">ساعة</option>
+                            <option value="2">ساعتين</option>
+                            <option value="3">ثلاث ساعات</option>
+                            <option value="4">اربع ساعات</option>
+                            <option value="5">خمس ساعات</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label> المبلغ :</label>
+                    <input asp-for="Price" class="form-control"/>
+                </div>
+
+
+                <div class="form-group">
+                    <select asp-for="OwnerCar" class="form-control">
+                        <option value="يوجد سيارة">يوجد سيارة</option>
+                        <option value="يتطلب توفير سيارة">يتطلب توفير سيارة</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <input type="submit" value=" حفــظ" class="btn btn-color coolor-White" />
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+

@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using XProject.Models;
 
 namespace XProject.Migrations
 {
     [DbContext(typeof(DBContext))]
-    partial class DBContextModelSnapshot : ModelSnapshot
+    [Migration("20210703110749_AddTable-OfferTraining")]
+    partial class AddTableOfferTraining
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -157,17 +159,11 @@ namespace XProject.Migrations
                     b.Property<int>("Hour")
                         .HasColumnType("int");
 
-                    b.Property<string>("OwnerCar")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("PaymantMethod")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
-
-                    b.Property<int>("nationalId")
-                        .HasColumnType("int");
 
                     b.Property<string>("period")
                         .HasColumnType("nvarchar(max)");

@@ -254,7 +254,7 @@ button.close {
 }
 
 .section-myProfile{
-    width:70%;
+    width:100%;
 
     text-align:right;
 }
@@ -272,4 +272,27 @@ button.close {
 }
 .coolor-White{
     color:white;
+}
+
+.newReq {
+    width: 100%;
+    margin: 20px;
+    height: 40px;
+}
+
+.btn-create {
+    line-height:0px;
+    float:left;
+    display:block;
+    border-radius:9px;
+    min-width: 60px;
+    height: 30px;
+    background-color: black;
+    color: white;
+    padding: 15px;
+    width: auto;
+}
+.btn-create:hover{
+    color:white;
+    text-decoration-style:none;
 }

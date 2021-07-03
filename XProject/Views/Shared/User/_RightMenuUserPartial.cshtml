@@ -2,22 +2,19 @@
     <ul>
         <li>
             <a asp-controller="Trainee" asp-action="dashboard">
-             <i class="fas fa-home"></i>  
-            الرئيسية</a>
+             <i class="fas fa-home"></i>  الرئيسية</a>
         </li>
         <li>
             <a asp-controller="Trainee" asp-action="MyProfile">
-             <i class="fas fa-id-badge"></i> ملفي
-            </a>
+             <i class="fas fa-id-badge"></i> ملفي</a>
         </li>
         <li>
-            <a href="#"> <i class="fas fa-receipt">
-              </i> طلباتي </a>
+            <a asp-controller="Trainee" asp-action="MyRequests">
+                <i class="fas fa-receipt"></i> طلباتي </a>
         </li>
         <li>
             <a asp-controller="Trainee" asp-action="Settings">
-                <i class="fas fa-user-cog"></i> الإعدادات
-            </a>
+                <i class="fas fa-user-cog"></i> الإعدادات</a>
         </li>
     </ul>
 </div>

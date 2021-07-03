@@ -10,11 +10,13 @@ namespace XProject.Models
     {
         [Key]
         public int Id { get; set; }
+        public int nationalId { get; set; }
         public double Price { get; set; }
         public int Hour { get; set; }
         public string Days { get; set; }
         public string Description { get; set; }
         public string period { get; set; }
+        public string OwnerCar { get; set; }
         public string PaymantMethod { get; set; }
 
     }

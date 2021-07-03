@@ -54,6 +54,53 @@ namespace XProject.Controllers
             return View();
         }
 
+        public IActionResult MyRequests()
+        {
+            if (ViewBag.NID = _httpContextAccessor.HttpContext.Session.GetString("UserId") == null)
+            {
+                return RedirectToAction("login", "Home");
+            }
+
+            string NID = _httpContextAccessor.HttpContext.Session.GetString("UserId");
+            int ConVertNID = Convert.ToInt32(NID);
+            //var User = _context.applactionUsers.Where(x => x.rolls == "2").FirstOrDefault();
+
+            var Request = _context.trainingoffers.Where(x => x.nationalId.Equals(ConVertNID)).FirstOrDefault();
+
+            ViewBag.TriningOffer = _context.trainingoffers.Where(x => x.nationalId.Equals(ConVertNID)).ToList();
+
+            return View(Request);
+        }
+
+
+        public IActionResult NewRequests()
+        {
+            if (ViewBag.NID = _httpContextAccessor.HttpContext.Session.GetString("UserId") == null)
+            {
+                return RedirectToAction("login", "Home");
+            }
+
+            ViewBag.NID = _httpContextAccessor.HttpContext.Session.GetString("UserId");
+            return View();
+        
+        }
+
+        [HttpPost]
+        public IActionResult NewRequests(TrainingOffers TO)
+        {
+            if (ViewBag.NID = _httpContextAccessor.HttpContext.Session.GetString("UserId") == null)
+            {
+                return RedirectToAction("login", "Home");
+            }
+
+            _context.Add(TO);
+
+           var Result = _context.SaveChanges();
+
+            return View();
+
+        }
+
         public IActionResult Settings()
         {
             if (ViewBag.NID = _httpContextAccessor.HttpContext.Session.GetString("UserId") == null)
@@ -63,5 +110,8 @@ namespace XProject.Controllers
 
             return View();
         }
+
+
+       
     }
 }

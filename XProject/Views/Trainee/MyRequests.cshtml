@@ -1,0 +1,63 @@
+﻿@*@model TrainingOffers*@
+@{
+    ViewData["Title"] = "MyRequests";
+}
+<section class="section-myProfile">
+    <div class="row">
+
+        <div class="col-md-4">
+            <partial name="~/Views/Shared/User/_RightMenuUserPartial.cshtml" />
+        </div>
+
+        <div class="col-md-8">
+
+            <div class="newReq">
+                <div class="box-btn">
+                    <a asp-controller="Trainee" asp-action="NewRequests" class="btn-create">  انشاء طلب جديد</a>
+                </div>
+            </div>
+
+            @if (Model.nationalId == null)
+            {
+                <div class="form-group">
+                    <label> لا يوجد لديك طلبات</label>
+                </div>
+            }
+            else
+            {
+                <div class="row">
+                    <div class="col-md-12">
+
+                        @foreach (var item in @ViewBag.TriningOffer)
+                        {
+
+                            <div class="box">
+                                <div class="row">
+                                   
+                                    <div class="col-md-5">
+                                        <div class="body-content">
+                                            <h6> @item.Description </h6>
+                                            @*<span>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </span>*@
+                                        </div> <!-- body-content -->
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label>Price</label><br />
+                                        <label> @item.Price</label> <span> ريال </span>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <a class="btn-more" asp-controller="" asp-action=""> التفاصيل </a>
+                                    </div>
+                                </div> <!-- Row -->
+                            </div> <!-- box -->
+                        }
+                    </div> <!-- col-md-12 -->
+                </div> <!-- Row -->
+            }
+        </div>
+    </div>
+</section>
+
