@@ -8,9 +8,19 @@ namespace XProject.libraries
 {
     public class utilities
     {
-        //private readonly IHttpContextAccessor _httpContextAccessor;
 
-        IHttpContextAccessor httpContextAccessor;
+        //private readonly DBContext _context;
+        //private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+        public utilities(IHttpContextAccessor httpContextAccessor)
+        {
+            _httpContextAccessor = httpContextAccessor;
+        }
+
+        
+
+        //IHttpContextAccessor httpContextAccessor;
         //public utilities(IHttpContextAccessor httpContextAccessor)
         //{
         //    _httpContextAccessor = httpContextAccessor;
@@ -29,5 +39,7 @@ namespace XProject.libraries
         //        return false;
         //    }
         //}
+
+
     }
 }

@@ -1,0 +1,52 @@
+﻿@*@model Days
+
+<h4>Registration</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Index">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Namd" class="form-control" />
+                <span asp-validation-for="Namd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Namd" class="form-control" />
+                <span asp-validation-for="Namd" class="text-danger"></span>
+            </div>
+            <div>
+                <table>
+                    @{ List<SelectListItem> OrgListing = Model.OrgList; }
+
+                    @foreach (var Org in OrgListing)
+                    {
+                        <tr>
+                            <td>
+                                <input id="@Org.Value" type="checkbox" name="Fruit" value="@Org.Value" checked="@Org.Selected" />
+                            </td>
+                            <td>
+                                <label for="@Org.Value">@Org.Text</label>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+    </script>
+}*@

@@ -1,4 +1,4 @@
-﻿@model ApplactionUsers
+﻿@model Days
 @{ ViewData["Title"] = "MyProfile"; }
 
 @foreach (var item in @ViewBag.InfoCoach)
@@ -17,68 +17,47 @@
                 <input readonly value="@item.nationalId" class="form-control" />
             </div>
 
-            <div class="form-group">
-                <label> الاســم </label>
-                <input asp-for="Name" class="form-control" />
-            </div>
+            <form method="post" >
 
-            <div class="form-group">
-                <label> رقم الهوية</label>
-                <input value="@item.Email" class="form-control" />
-            </div>
 
-            <div class="form-group">
-                <label>  الساعات </label>
-                <select asp-for="Hours" class="form-control">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                </select>
-            </div>
-            <br />
-            <div class="form-group">
-                <div class="box-days">
-                    <label> الايام المناسبة لك </label>
-                    <ul>
-                        <li>
-                            <input type="checkbox" />  السبت
-                        </li>
-
-                        <li>
-                            <input type="checkbox" />  الأحد
-                        </li>
-
-                        <li>
-                            <input type="checkbox" />  الأثنين
-                        </li>
-
-                        <li>
-                            <input type="checkbox" />  الثلاثاء
-                        </li>
-
-                        <li>
-                            <input type="checkbox" />  الأربعاء
-                        </li>
-
-                        <li>
-                            <input type="checkbox" />  الخميس
-                        </li>
-
-                        <li>
-                            <input type="checkbox" />  الجمعة
-                        </li>
-                    </ul>
+                <div class="form-group">
+                    <label>  الساعات </label>
+                    <select  name="hour" class="form-control">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
                 </div>
-            </div>
+                <br />
+                <div class="form-group">
+                    <div class="box-days">
+                        <label> الايام المناسبة لك </label>
+                        <ul>
+                            @*<li>
+                                <input class="form-check" name="AllDaySelected" value="@Model.Namd" type="checkbox" id="@Model.Id" checked="@Model.IsCheched" />
+                            </li>*@
+                            @foreach (var day in @ViewBag.days)
+                            {
+                                <li>
+                                    <input class="form-check" name="AllDaySelected" 
+                                           type="checkbox" id="@day.Id"
+                                           checked="@day.IsCheched" />
+                                    <label for="@day.Id"> @day.Namd</label>
+                                </li>}
 
-            <br /> <br />
+                        </ul>
+                    </div>
+                </div>
 
-            <div class="form-group">
-                <input type="submit" value=" حفــظ" class="btn btn-color coolor-White" />
-            </div>
+                <br /> <br />
+
+                <div class="form-group">
+                    <input type="submit" value=" حفــظ" class="btn btn-color coolor-White" />
+                </div>
+            </form>
         </div>
     </div>
 </section>

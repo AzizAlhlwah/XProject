@@ -44,7 +44,24 @@ namespace XProject.Controllers
             return View();
         }
 
+        public IActionResult MyProfile()
+        {
+            if (ViewBag.NID = _httpContextAccessor.HttpContext.Session.GetString("UserId") == null)
+            {
+                return RedirectToAction("login", "Home");
+            }
 
+            return View();
+        }
 
+        public IActionResult Settings()
+        {
+            if (ViewBag.NID = _httpContextAccessor.HttpContext.Session.GetString("UserId") == null)
+            {
+                return RedirectToAction("login", "Home");
+            }
+
+            return View();
+        }
     }
 }

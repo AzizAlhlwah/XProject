@@ -18,6 +18,10 @@ namespace XProject.Models
        public DbSet<Trainee> trainee { get; set; }
         public DbSet<ApplactionUsers> applactionUsers { get; set; }
         public DbSet<CoachShudel> coachShudel { get; set; }
-        
+
+        public DbSet<Days> days { get; set; }
+
+        public DbSet<TrainingOffers> trainingoffers { get; set; }
+
     }
 }
