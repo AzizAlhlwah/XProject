@@ -23,7 +23,7 @@
             <i class="fas fa-id-card"></i>
             رقم الهوية
         </label>
-        <input asp-for="nationalId"  class="form-control" placeholder="national Id" required />
+        <input asp-for="nationalId"  class="form-control" placeholder="national Id" type="text" maxlength="10" pattern="([0-9]|[0-9]|[0-9])" required />
     </div>
 
 
@@ -40,7 +40,7 @@
             <i class="fas fa-unlock-alt"></i>
             كلمة المرور
         </label>
-        <input asp-for="Password" class="form-control" type="password" placeholder="password" required />
+        <input id="password" asp-for="Password" class="form-control" type="password" placeholder="password" required />
     </div>
 
     <div class="form-group">
@@ -48,14 +48,16 @@
             <i class="fas fa-unlock-alt"></i>
             تأكيد كلملة المرور
         </label>
-        <input asp-for="Confirmpassword" class="form-control" type="password" placeholder="Confirm password" required />
+        <input id="confirm_password"  asp-for="Confirmpassword" class="form-control" type="password" placeholder="Confirm password" required />
     </div>
 
     <div class="form-group">
-        <input type="submit" class="btn btn-primary btn-color" value="تسجيل " />
+        <input  type="submit" class="btn btn-primary btn-color" value="تسجيل " />
         <br />  <br />
         <a href="#">  نسيت كلمة المرور؟</a>
         <br />
         <a asp-controller="Home" asp-action="login">  هل لديك حساب؟</a>
     </div>
 </div> <!--  box-login -->
+
+
