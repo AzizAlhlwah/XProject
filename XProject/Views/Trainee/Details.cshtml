@@ -1,0 +1,95 @@
+﻿@model TrainingOffers
+@{
+    ViewData["Title"] = "Details";
+}
+
+<form asp-controller="Trainee" asp-action="ChangeStutes" method="post">
+
+    <section class="section-myProfile">
+        <div class="row">
+            
+
+            <div class="col-md-4">
+                @if (@ViewBag.Roll == "2")
+                {
+                    <partial name="~/Views/Shared/User/_RightMenuUserPartial.cshtml" />
+
+                }
+                else if (@ViewBag.Roll == "1")
+                {
+                    <partial name="~/Views/Shared/_RightMenuCoachPartial.cshtml" />
+                }
+
+            </div> <!-- col-md-4 -->
+
+            <div class="col-md-8">
+                <input type="hidden" asp-for="Id" value="@Model.Id" />
+                @if (@ViewBag.Roll == "1")
+                {
+                    <div class="Req-New-offer">
+                        <a href="#" class="btn-create">  تقديم عرض</a>
+                    </div>
+                }
+                <div class="Detils-offer">
+                    <div class="header-detils">
+                        <div class="info-user">
+                            <a href="#">
+                                <label> @ViewBag.name </label>
+                            </a>
+                            <label class="float-left d-block"> More Info</label>
+                        </div> <!-- info-user -->
+                    </div> <!-- header-detils -->
+                    <div class="body-offer">
+                        <div class="">
+                            @*<h3> عنةان العىض</h3>*@
+                        </div>
+
+                        <div>
+                            <p>  </p>
+                            <label asp-for="Description"> @Model.Description</label>
+                            <input type="hidden" asp-for="Description" value="@Model.Description" />
+
+                            <label><b>   لمدة  </b></label>
+                            <p> @Model.period </p>
+                            <input type="hidden" asp-for="period" value="@Model.period" />
+
+                            <label><b> الأيام </b></label>
+                            <p>@Model.Days </p>
+                            <input type="hidden" asp-for="Days" value="@Model.Days" />
+
+                            <label><b>   كم ساعة باليوم  </b></label>
+                            <p>@Model.Hour <span> ساعات </span> </p>
+                            <input type="hidden" asp-for="Hour" value="@Model.Hour" />
+
+                            <label> <b> السيارة  </b></label>
+                            <p>@Model.OwnerCar </p>
+                            <input type="hidden" asp-for="OwnerCar" value="@Model.OwnerCar" />
+
+                            <label><b> الميزانية </b></label>
+                            <p> @Model.Price <span> ريال </span></p>
+                            <input type="hidden" asp-for="Price" value="@Model.Price" />
+                        </div>
+                    </div> <!-- body-offer -->
+
+                    <hr />
+
+                    @if (@ViewBag.YorRightUser == true)
+                    {
+                        <div class="control-offer">
+                            <label>  حالة العرض</label>
+                            <select asp-for="Stutes">
+                                <option>مفتوح</option>
+                                <option>مغلق</option>
+                            </select>
+
+                            <input type="submit" value="Save" />
+                            <a class="btn-create float-left" asp-controller="Trainee" asp-action="ChangeStutes" asp-route-id="@Model.Id">  حفظ</a>
+                        </div> <!-- control-offer -->
+                    }
+
+                </div> <!-- Detils-offer -->
+            </div> <!-- col-md-8 -->
+        </div> <!-- row -->
+    </section>
+
+</form>

@@ -14,6 +14,7 @@
         <div class="col-md-8">
             <form method="post" asp-controller="Trainee" asp-action="NewRequests">
                 <input type="hidden" asp-for="nationalId" value="@ViewBag.NID"/>
+                <input type="hidden" asp-for="Stutes" value="مفتوح" />
                 <div class="form-group">
                     <label>  الوصف: </label>
                     <input asp-for="Description" class="form-control" />

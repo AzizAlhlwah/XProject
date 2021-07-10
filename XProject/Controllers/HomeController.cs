@@ -37,17 +37,24 @@ namespace XProject.Controllers
             // Git
             ViewBag.NID = _httpContextAccessor.HttpContext.Session.GetString("UserId");
 
+            //int Cuont = _context.trainingoffers.Count();
+
+           
+
             //Set
             //_httpContextAccessor.HttpContext.Session.SetString("UserId", data.emp_id.ToString());
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult AllRequests()
         {
             // Git
             ViewBag.NID = _httpContextAccessor.HttpContext.Session.GetString("UserId");
 
-            return View();
+
+           var AllReq = _context.trainingoffers.Where(x => x.Stutes != "مغلق").ToList();
+
+            return View(AllReq);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

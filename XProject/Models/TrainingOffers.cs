@@ -19,5 +19,7 @@ namespace XProject.Models
         public string OwnerCar { get; set; }
         public string PaymantMethod { get; set; }
 
+        public string Stutes { get; set; }
+
     }
 }

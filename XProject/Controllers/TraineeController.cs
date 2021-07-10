@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -51,6 +52,13 @@ namespace XProject.Controllers
                 return RedirectToAction("login", "Home");
             }
 
+            var nationalId = Convert.ToInt32(_httpContextAccessor.HttpContext.Session.GetString("UserId"));
+
+            ViewBag.Info =  _context.applactionUsers
+                   .Where(x => x.nationalId == nationalId).FirstOrDefault();
+
+           // ViewBag.Info = GetAllInfo(nationalId);
+
             return View();
         }
 
@@ -65,7 +73,7 @@ namespace XProject.Controllers
             int ConVertNID = Convert.ToInt32(NID);
             //var User = _context.applactionUsers.Where(x => x.rolls == "2").FirstOrDefault();
 
-            var Request = _context.trainingoffers.Where(x => x.nationalId.Equals(ConVertNID)).FirstOrDefault();
+            var Request = _context.trainingoffers.Where(x => x.nationalId.Equals(ConVertNID) && x.Stutes == "مفتوح").FirstOrDefault();
 
             ViewBag.TriningOffer = _context.trainingoffers.Where(x => x.nationalId.Equals(ConVertNID)).ToList();
 
@@ -82,7 +90,7 @@ namespace XProject.Controllers
 
             ViewBag.NID = _httpContextAccessor.HttpContext.Session.GetString("UserId");
             return View();
-        
+
         }
 
         [HttpPost]
@@ -95,7 +103,7 @@ namespace XProject.Controllers
 
             _context.Add(TO);
 
-           var Result = _context.SaveChanges();
+            var Result = _context.SaveChanges();
 
             return View();
 
@@ -112,6 +120,64 @@ namespace XProject.Controllers
         }
 
 
-       
+        public IActionResult Details(int Id)
+        {
+            if (ViewBag.NID = _httpContextAccessor.HttpContext.Session.GetString("UserId") == null)
+            {
+                return RedirectToAction("login", "Home");
+            }
+
+            var model = _context.trainingoffers.Where(x => x.Id == Id).FirstOrDefault();
+            int nationalId = model.nationalId;
+
+            if(nationalId == Convert.ToInt32(_httpContextAccessor.HttpContext.Session.GetString("UserId")))
+            {
+                ViewBag.YorRightUser = true;
+            }
+
+            ViewBag.name = GetNameByNationalID(nationalId);
+
+            ViewBag.Roll = GetRool();
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult ChangeStutes(int Id, TrainingOffers trainingOffers)
+        {
+            if (ViewBag.NID = _httpContextAccessor.HttpContext.Session.GetString("UserId") == null)
+            {
+                return RedirectToAction("login", "Home");
+            }
+            int id_ = trainingOffers.Id;
+            var Offer = _context.trainingoffers.Find(id_);
+
+            Offer.Stutes = trainingOffers.Stutes;
+            _context.Entry(trainingOffers).State = EntityState.Detached;
+            _context.Update(Offer);
+            _context.SaveChanges();
+
+            return RedirectToAction("Details",new { Id = id_ });
+        }
+            
+
+        //Method Get Rool
+        public string GetRool()
+        {
+            return _httpContextAccessor.HttpContext.Session.GetString("Roll");
+        }
+
+        //Method GetNameByNationalID
+        public string GetNameByNationalID(int nationalId)
+        {
+            return _context.applactionUsers
+                .Where(x => x.nationalId == nationalId).FirstOrDefault().Name;
+        }
+
+        public List<ApplactionUsers> GetAllInfo(int nationalId)
+        {
+            return _context.applactionUsers
+                    .Where(x => x.nationalId == nationalId).ToList();
+        }
     }
 }
