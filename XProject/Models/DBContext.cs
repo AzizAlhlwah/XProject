@@ -23,5 +23,7 @@ namespace XProject.Models
 
         public DbSet<TrainingOffers> trainingoffers { get; set; }
 
+        public DbSet<RequestOfferToTrainee> requestOfferToTrainee { get; set; }
+
     }
 }

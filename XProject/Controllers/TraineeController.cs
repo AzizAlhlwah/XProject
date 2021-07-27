@@ -42,6 +42,12 @@ namespace XProject.Controllers
                 return RedirectToAction("login", "Home");
             }
 
+            var nationalId = Convert.ToInt32(_httpContextAccessor.HttpContext.Session.GetString("UserId"));
+
+            ViewBag.openTicket = _context.trainingoffers.Where(x => x.nationalId == nationalId && x.Stutes == "مفتوح").Count();
+
+            ViewBag.CloseTicket = _context.trainingoffers.Where(x => x.nationalId == nationalId && x.Stutes == "مغلق").Count();
+
             return View();
         }
 
@@ -57,9 +63,15 @@ namespace XProject.Controllers
             ViewBag.Info =  _context.applactionUsers
                    .Where(x => x.nationalId == nationalId).FirstOrDefault();
 
-           // ViewBag.Info = GetAllInfo(nationalId);
+            // ViewBag.Info = GetAllInfo(nationalId);
 
-            return View();
+
+            //Take it From My Sitting Action
+            //var nationalId = Convert.ToInt32(_httpContextAccessor.HttpContext.Session.GetString("UserId"));
+            var model = _context.applactionUsers.Where(x => x.nationalId == nationalId).FirstOrDefault();
+
+
+            return View(model);
         }
 
         public IActionResult MyRequests()
@@ -116,9 +128,40 @@ namespace XProject.Controllers
                 return RedirectToAction("login", "Home");
             }
 
-            return View();
+            var nationalId =Convert.ToInt32(_httpContextAccessor.HttpContext.Session.GetString("UserId"));
+           var model = _context.applactionUsers.Where(x => x.nationalId == nationalId).FirstOrDefault();
+
+            return View(model);
         }
 
+        [HttpPost]
+        public IActionResult Settings(ApplactionUsers applactionUsers)
+        {
+            if (ViewBag.NID = _httpContextAccessor.HttpContext.Session.GetString("UserId") == null)
+            {
+                return RedirectToAction("login", "Home");
+            }
+
+            var nationalId = Convert.ToInt32(_httpContextAccessor.HttpContext.Session.GetString("UserId"));
+            // var model = _context.applactionUsers.Where(x => x.nationalId == nationalId).FirstOrDefault();
+
+
+            //int id_ = trainingOffers.Id;
+            var User = _context.applactionUsers
+                .Where(x => x.nationalId == nationalId).FirstOrDefault();
+
+            //var InfoCurrntUser = _context.applactionUsers.Find(nationalId);
+
+            User.Password = applactionUsers.Password;
+            User.Confirmpassword = applactionUsers.Confirmpassword;
+            User.Name = applactionUsers.Name;
+            User.Email = applactionUsers.Email;
+            _context.Entry(applactionUsers).State = EntityState.Detached;
+            _context.Update(User);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
 
         public IActionResult Details(int Id)
         {
@@ -138,6 +181,27 @@ namespace XProject.Controllers
             ViewBag.name = GetNameByNationalID(nationalId);
 
             ViewBag.Roll = GetRool();
+
+
+
+            ViewBag.AllOffer =  _context.requestOfferToTrainee.Where(x => x.status == "تحت المراجعة" && x.Id_Offer_request == Id).ToList();
+           
+            var NIDCoach = _context.requestOfferToTrainee.Where(x => x.status == "تحت المراجعة" && x.Id_Offer_request == Id).FirstOrDefault();
+
+            int NIDCO;
+
+            if (NIDCoach != null)
+            {
+                 NIDCO = NIDCoach.nationalId_Coash;
+                ViewBag.NameCoach = _context.applactionUsers.Where(x => x.nationalId == NIDCoach.nationalId_Coash).FirstOrDefault().Name;
+            }
+            
+
+            //if(NIDCO != null)
+            //{
+            //    ViewBag.NameCoach = _context.applactionUsers.Where(x => x.nationalId == NIDCoach.nationalId_Coash).FirstOrDefault().Name;
+            //}
+           
 
             return View(model);
         }

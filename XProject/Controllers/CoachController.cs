@@ -32,16 +32,18 @@ namespace XProject.Controllers
 
         public IActionResult Index()
         {
-            if (ViewBag.NID = _httpContextAccessor.HttpContext.Session.GetString("UserId") == null)
-            {
-                return RedirectToAction("login", "Home");
-            }
-            if (_httpContextAccessor.HttpContext.Session.GetString("Roll") != "1")
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            //if (ViewBag.NID = _httpContextAccessor.HttpContext.Session.GetString("UserId") == null)
+            //{
+            //    return RedirectToAction("login", "Home");
+            //}
+            //if (_httpContextAccessor.HttpContext.Session.GetString("Roll") != "1")
+            //{
+            //    return RedirectToAction("Index", "Home");
+            //}
 
-            var result = _context.applactionUsers.Where(x => x.nationalId != null);
+            
+
+            var result = _context.applactionUsers.Where(x => x.rolls == "1");
 
             return View(result);
         }
@@ -57,7 +59,23 @@ namespace XProject.Controllers
             return View();
         }
 
-        
+        public IActionResult requestOffer()
+        {
+
+            var NID = Convert.ToInt32(_httpContextAccessor.HttpContext
+                            .Session.GetString("UserId"));
+
+            var model = _context.requestOfferToTrainee.Where(x => x.nationalId_Coash == NID).ToList();
+            int Id_offer  = model.Select(x => x.Id_Offer_request).FirstOrDefault();
+            
+
+            ViewBag.NameOffier = _context.trainingoffers.Where(x => x.Id == Id_offer).FirstOrDefault().Description;
+            ViewBag.hours = _context.trainingoffers.Where(x => x.Id == Id_offer).FirstOrDefault().Hour;
+
+            return View(model);
+        }
+
+
 
         public IActionResult MyProfile()
         {
@@ -100,6 +118,57 @@ namespace XProject.Controllers
             }
             return View();
         }
+
+
+        public IActionResult ApplyForOffer(int Id)
+        {
+            if (ViewBag.NID = _httpContextAccessor.HttpContext.Session.GetString("UserId") == null)
+            {
+                return RedirectToAction("login", "Home");
+            }
+            if (_httpContextAccessor.HttpContext.Session.GetString("Roll") != "1")
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            ViewBag.NIDUser = _context.trainingoffers.Where(x => x.Id == Id).FirstOrDefault().nationalId;
+
+            ViewBag.NIDCoach = Convert.ToInt32(_httpContextAccessor.HttpContext.Session.GetString("UserId"));
+
+            ViewBag.NameOffier = _context.trainingoffers.Where(x => x.Id == Id).FirstOrDefault().Description;
+
+            ViewBag.Id_Offer_request = Id;
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult ApplyForOffer(RequestOfferToTrainee offer)
+        {
+            if (ViewBag.NID = _httpContextAccessor.HttpContext.Session.GetString("UserId") == null)
+            {
+                return RedirectToAction("login", "Home");
+            }
+            if (_httpContextAccessor.HttpContext.Session.GetString("Roll") != "1")
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            RequestOfferToTrainee ret = new RequestOfferToTrainee();
+
+            ret.Id_Offer_request = offer.Id_Offer_request;
+            ret.nationalId_Coash = offer.nationalId_Coash;
+            ret.nationalId_User = offer.nationalId_User;
+            ret.Price = offer.Price;
+            ret.text = offer.text;
+            ret.status = "تحت المراجعة";
+
+            _context.requestOfferToTrainee.Add(ret);
+            _context.SaveChanges();
+            
+            return RedirectToAction("requestOffer");
+        }
+
 
         //Method
         public bool Redireact()

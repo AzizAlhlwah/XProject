@@ -12,39 +12,40 @@
             @foreach (var item in Model)
             {
 
-<div class="box">
-    <div class="row">
-        <div class="col-md-2">
-            <div class="box-img">
-                <img src="~/images/icon_user.png" />
-            </div> <!-- box-img -->
-        </div>
-        <div class="col-md-5">
-            <div class="body-content">
-                <h5> @item.Description </h5>
-                <span>
-                    <label> @item.Days - @item.Hour <span>  ساعات </span></label>
-                </span>
-            </div> <!-- body-content -->
-        </div>
-        <div class="col-md-3">
-            <label> السيارة</label><br />
-            <label> @item.OwnerCar</label>
-        </div>
-        @if (@ViewBag.NID != null)
-        {
-            <div class="col-md-2">
-                <a class="btn-more" asp-controller="Trainee" asp-action="Details" asp-route-id="@item.Id"> التفاصيل </a>
-            </div>
-        }
-        else
-        {
-            <div class="col-md-2">
-                <a class="btn-more" asp-controller="Home" asp-action="register" > التسجيل </a>
-            </div>
-        }
-    </div> <!-- Row -->
-</div> <!-- box -->            }
+                <div class="box">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="box-img">
+                                <img src="~/images/icon_user.png" />
+                            </div> <!-- box-img -->
+                        </div>
+                        <div class="col-md-5">
+                            <div class="body-content">
+                                <h5> @item.Description </h5>
+                                <span>
+                                    <label> @item.Days - @item.Hour <span>  ساعات </span></label>
+                                </span>
+                            </div> <!-- body-content -->
+                        </div>
+                        <div class="col-md-3">
+                            <label> السيارة</label><br />
+                            <label> @item.OwnerCar</label>
+                        </div>
+                        @if (@ViewBag.NID != null)
+                        {
+                            <div class="col-md-2">
+                                <a class="btn-more" asp-controller="Trainee" asp-action="Details" asp-route-id="@item.Id"> التفاصيل </a>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-md-2">
+                                <a class="btn-more" asp-controller="Home" asp-action="register" > التسجيل </a>
+                            </div>
+                        }
+                    </div> <!-- Row -->
+                </div> <!-- box -->            
+             }
         </div> <!-- col-md-12 -->
     </div> <!-- Row -->
 </section>

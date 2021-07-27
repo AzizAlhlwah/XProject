@@ -35,7 +35,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\" />
     <Folder Include="Views\Shared\Coach\" />
     <Folder Include="wwwroot\images\coachs\" />
   </ItemGroup>

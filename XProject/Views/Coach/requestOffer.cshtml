@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewData["Title"] = "requestOffer";
+}
+
+<section class="section-myProfile">
+    <div class="row">
+        <div class="col-md-4">
+            <partial name="~/Views/Shared/_RightMenuCoachPartial.cshtml" />
+        </div> <!-- col-md-3 -->
+
+        <div class="col-md-8">
+
+            @foreach (var item in Model)
+            {
+
+                <div class="box">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="box-img">
+                                <img src="~/images/icon_user.png" />
+                            </div> <!-- box-img -->
+                        </div>
+                        <div class="col-md-5">
+                            <div class="body-content">
+                                <h5> @ViewBag.NameOffier </h5>
+                                <span>
+                                    <label> @ViewBag.hours <span>  ساعات </span></label>
+                                </span>
+                            </div> <!-- body-content -->
+                        </div>
+                        <div class="col-md-3">
+                            <label> المبلغ </label><br />
+                            <label> @item.Price</label>
+                        </div>
+                        
+                            <div class="col-md-2">
+                                <a class="btn-more" asp-controller="Trainee" asp-action="Details" asp-route-id="@item.Id"> التفاصيل </a>
+                            </div>
+                       
+                    </div> <!-- Row -->
+                </div> <!-- box -->
+            }
+
+        </div> <!-- col-md-9 -->
+    </div> <!-- row -->
+</section>
+

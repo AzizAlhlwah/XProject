@@ -27,69 +27,119 @@
                 @if (@ViewBag.Roll == "1")
                 {
                     <div class="Req-New-offer">
-                        <a href="#" class="btn-create">  تقديم عرض</a>
+                        <a  class="btn-create" asp-controller="Coach" asp-action="ApplyForOffer" asp-route-id="@Model.Id" >  تقديم عرض</a>
                     </div>
                 }
-                <div class="Detils-offer">
-                    <div class="header-detils">
-                        <div class="info-user">
-                            <a href="#">
-                                <label> @ViewBag.name </label>
-                            </a>
-                            <label class="float-left d-block"> More Info</label>
-                        </div> <!-- info-user -->
-                    </div> <!-- header-detils -->
-                    <div class="body-offer">
-                        <div class="">
-                            @*<h3> عنةان العىض</h3>*@
+            <div class="Detils-offer">
+                <div class="header-detils">
+                    <div class="info-user">
+                        <a href="#">
+                            <label> @ViewBag.name </label>
+                        </a>
+                        <label class="float-left d-block"> More Info</label>
+                    </div> <!-- info-user -->
+                </div> <!-- header-detils -->
+                <div class="body-offer">
+                    <div class="">
+                        @*<h3> عنةان العىض</h3>*@
+                    </div>
+
+                    <div>
+                        <p>  </p>
+                        <label asp-for="Description"> @Model.Description</label>
+                        <input type="hidden" asp-for="Description" value="@Model.Description" />
+                        <br />
+                        <label><b>   المدة  </b></label>
+                        <p> @Model.period </p>
+                        <input type="hidden" asp-for="period" value="@Model.period" />
+
+                        <label><b> الأيام </b></label>
+                        <p>@Model.Days </p>
+                        <input type="hidden" asp-for="Days" value="@Model.Days" />
+
+                        <label><b>   كم ساعة باليوم  </b></label>
+                        <p>@Model.Hour <span> ساعات </span> </p>
+                        <input type="hidden" asp-for="Hour" value="@Model.Hour" />
+
+                        <label> <b> السيارة  </b></label>
+                        <p>@Model.OwnerCar </p>
+                        <input type="hidden" asp-for="OwnerCar" value="@Model.OwnerCar" />
+
+                        <label><b> الميزانية </b></label>
+                        <p> @Model.Price <span> ريال </span></p>
+                        <input type="hidden" asp-for="Price" value="@Model.Price" />
+                    </div>
+                </div> <!-- body-offer -->
+
+                <hr />
+
+                @if (@ViewBag.YorRightUser == true)
+                {
+                    <div class="control-offer">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <label>  حالة العرض</label>
+                                <select asp-for="Stutes" class="form-control">
+                                    <option>مفتوح</option>
+                                    <option>مغلق</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label> </label>
+                                <input class="btn-create float-left" type="submit" value="حفظ" />
+                            </div>
                         </div>
 
-                        <div>
-                            <p>  </p>
-                            <label asp-for="Description"> @Model.Description</label>
-                            <input type="hidden" asp-for="Description" value="@Model.Description" />
 
-                            <label><b>   لمدة  </b></label>
-                            <p> @Model.period </p>
-                            <input type="hidden" asp-for="period" value="@Model.period" />
+                        
 
-                            <label><b> الأيام </b></label>
-                            <p>@Model.Days </p>
-                            <input type="hidden" asp-for="Days" value="@Model.Days" />
+                        
+                        @*<a class="btn-create float-left" asp-controller="Trainee" asp-action="ChangeStutes" asp-route-id="@Model.Id">  حفظ</a>*@
+                    </div> <!-- control-offer -->
+                }
 
-                            <label><b>   كم ساعة باليوم  </b></label>
-                            <p>@Model.Hour <span> ساعات </span> </p>
-                            <input type="hidden" asp-for="Hour" value="@Model.Hour" />
-
-                            <label> <b> السيارة  </b></label>
-                            <p>@Model.OwnerCar </p>
-                            <input type="hidden" asp-for="OwnerCar" value="@Model.OwnerCar" />
-
-                            <label><b> الميزانية </b></label>
-                            <p> @Model.Price <span> ريال </span></p>
-                            <input type="hidden" asp-for="Price" value="@Model.Price" />
-                        </div>
-                    </div> <!-- body-offer -->
-
-                    <hr />
-
-                    @if (@ViewBag.YorRightUser == true)
-                    {
-                        <div class="control-offer">
-                            <label>  حالة العرض</label>
-                            <select asp-for="Stutes">
-                                <option>مفتوح</option>
-                                <option>مغلق</option>
-                            </select>
-
-                            <input type="submit" value="Save" />
-                            <a class="btn-create float-left" asp-controller="Trainee" asp-action="ChangeStutes" asp-route-id="@Model.Id">  حفظ</a>
-                        </div> <!-- control-offer -->
-                    }
-
-                </div> <!-- Detils-offer -->
+            </div> <!-- Detils-offer -->
             </div> <!-- col-md-8 -->
         </div> <!-- row -->
+        <br /><br />
+        <div class="row">
+            <div class="col-md-4"></div>
+
+            <div class="col-md-8">
+                @if (@ViewBag.AllOffer != null)
+                {
+                    @foreach (var item in @ViewBag.AllOffer)
+                    {
+                        <div class="box">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="box-img">
+                                        <img src="~/images/icon_user.png" />
+                                    </div> <!-- box-img -->
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="body-content">
+                                        <h5>  @ViewBag.NameCoach</h5>
+                                        <span>
+                                            @*<label> @ViewBag.hours <span>  ساعات </span></label>*@
+                                        </span>
+                                    </div> <!-- body-content -->
+                                </div>
+                                <div class="col-md-3">
+                                    <label> المبلغ </label><br />
+                                    <label> @item.Price </label>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <a class="btn-more" asp-controller="Trainee" asp-action="Details" asp-route-id="@item.Id"> قبول  </a>
+                                </div>
+
+                            </div> <!-- Row -->
+                        </div> <!-- box -->
+                    }
+                }
+            </div>
+        </div>
     </section>
 
 </form>

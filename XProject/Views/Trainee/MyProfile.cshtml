@@ -1,4 +1,4 @@
-﻿
+﻿@model ApplactionUsers
 @{
     ViewData["Title"] = "MyProfile";
 }
@@ -18,27 +18,58 @@
                 <input readonly value="@ViewBag.Info.nationalId" class="form-control" />
             </div>
 
-            <form method="post">
+            @*<form method="post">*@
 
+
+            @*<div class="form-group">
+                <label>  الاســــم </label>
+                <p> @ViewBag.Info.Name</p>
+            </div>*@
+            <br />
+            <div class="form-group">
+                @*<div class="box-days">
+                    <label> البريد الإلكتروني </label>
+                    <p> @ViewBag.Info.Email</p>
+                </div>*@
+            </div>
+
+
+            <form method="post" asp-controller="Trainee" asp-action="Settings">
+                <div class="form-group">
+                    <l abel>
+                        الاســـم </label>
+                        <input asp-for="Name" class="form-control" />
+                </div>
 
                 <div class="form-group">
-                    <label>  الاســــم </label>
-                    <p> @ViewBag.Info.Name</p>
+                    <label> كلمة المرور </label>
+                    <input asp-for="Password" type="password" value="@Model.Password" class="form-control" />
                 </div>
+
+                <div class="form-group">
+                    <label>  تأكيد كلمة المرور </label>
+                    <input asp-for="Confirmpassword" type="password" value="@Model.Confirmpassword" class="form-control" />
+                </div>
+
                 <br />
                 <div class="form-group">
                     <div class="box-days">
                         <label> البريد الإلكتروني </label>
-                        <p> @ViewBag.Info.Email</p>
+                        @*<label>@Model.Email</label>*@
+                        <input asp-for="Email" class="form-control" />
                     </div>
                 </div>
 
-               
-
                 <div class="form-group">
-                    @*K<input type="submit" value=" حفــظ" class="btn btn-color coolor-White" />*@
+                    <input type="submit" value=" حفــظ" class="btn btn-color coolor-White" />
                 </div>
             </form>
+
+
+            <div class="form-group">
+                @*K<input type="submit" value=" حفــظ" class="btn btn-color coolor-White" />*@
+            </div>
+
         </div>
     </div>
 </section>
